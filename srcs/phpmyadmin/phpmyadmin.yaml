@@ -19,10 +19,6 @@ spec:
         name: phpmyadmin
         ports:
         - containerPort: 5000
-        resources:
-         limits:
-            memory: "256Mi"
-            cpu: "500m"
 
 ---
 

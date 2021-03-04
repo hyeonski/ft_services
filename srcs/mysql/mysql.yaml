@@ -27,7 +27,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 2Gi
+      storage: 1Gi
 
 ---
 
@@ -54,13 +54,10 @@ spec:
         name: mysql
         ports:
         - containerPort: 3306
+          name: mysql
         volumeMounts:
         - name: mysql-backup
           mountPath: /var/lib/mysql
-        resources:
-         limits:
-            memory: "256Mi"
-            cpu: "500m"
       volumes:
       - name: mysql-backup
         persistentVolumeClaim:
