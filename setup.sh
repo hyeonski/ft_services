@@ -26,3 +26,10 @@ echo "\033[32mmysql image build\033[0m"
 docker build -t mysql:latest .
 echo "\033[36mmysql deployment\033[0m"
 kubectl apply -f mysql.yaml
+
+#wordpress
+cd ../wordpress
+echo "\033[32mwordpress image build\033[0m"
+docker build -t wordpress:latest .
+echo "\033[36mwordpress deployment\033[0m"
+kubectl apply -f wordpress.yaml

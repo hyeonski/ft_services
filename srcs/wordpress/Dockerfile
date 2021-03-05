@@ -8,21 +8,14 @@ RUN apk update \
 				php7-soap php7-xmlrpc php7-posix php7-mcrypt php7-gettext php7-ldap \
 				php7-ctype php7-dom mysql-client
 
-RUN wget https://wordpress.org/latest.tar.gz
-RUN tar -xvf latest.tar.gz && \
-	rm -f latest.tar.gz && \
-	mv wordpress/ /var/www/
-COPY wp-config.php /var/www/wordpress/
-COPY default.conf /etc/nginx/conf.d/
 
+COPY /wordpress.tar.gz /
+COPY /default.conf /etc/nginx/conf.d/
+COPY /set.sh /usr/sbin/set.sh
+COPY /wordpress.sql /
 
-COPY wordpress_setup.sh /usr/sbin/wordpress_setup.sh
-
-RUN chmod +x /usr/sbin/wordpress_setup.sh && \
-	mkdir -p /run/nginx
-
-COPY wordpress.sql /run/nginx/wordpress.sql
+RUN chmod 777 /usr/sbin/set.sh
 
 EXPOSE 5050
-CMD /bin/sh "/usr/sbin/wordpress_setup.sh" && php-fpm7 \
-		&& nginx -g "daemon off;"
+
+ENTRYPOINT  ["sh", "/usr/sbin/set.sh"]
