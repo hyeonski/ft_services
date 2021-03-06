@@ -40,3 +40,10 @@ echo "\033[32mftps image build\033[0m"
 docker build -t ftps:latest .
 echo "\033[36mftps deployment\033[0m"
 kubectl apply -f ftps.yaml
+
+#influxdb
+cd ../influxdb
+echo "\033[32minfluxdb image build\033[0m"
+docker build -t influxdb:latest .
+echo "\033[36minfluxdb deployment\033[0m"
+kubectl apply -f influxdb.yaml
