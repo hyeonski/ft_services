@@ -38,5 +38,7 @@ spec:
   selector:
     app: grafana
   ports:
-  - port: 3000
-    name: grafana
+  - name: grafana
+    port: 3000
+    protocol: TCP
+    targetPort: 3000
