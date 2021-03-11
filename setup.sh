@@ -41,9 +41,23 @@ docker build -t ftps:latest .
 echo "\033[36mftps deployment\033[0m"
 kubectl apply -f ftps.yaml
 
-#influxdb
+# influxdb
 cd ../influxdb
 echo "\033[32minfluxdb image build\033[0m"
 docker build -t influxdb:latest .
 echo "\033[36minfluxdb deployment\033[0m"
 kubectl apply -f influxdb.yaml
+
+# telegraf
+cd ../telegraf
+echo "\033[32mtelegraf image build\033[0m"
+docker build -t telegraf:latest .
+echo "\033[36mtelegraf deployment\033[0m"
+kubectl apply -f telegraf.yaml
+
+# # grafana
+# cd ../grafana
+# echo "\033[32mgrafana image build\033[0m"
+# docker build -t grafana:latest .
+# echo "\033[36mgrafana deployment\033[0m"
+# kubectl apply -f grafana.yaml
